@@ -9,4 +9,4 @@ let i = 0;
 while (i < lines.length) {
     console.log(lines[i]);
     i++;
-}
+};
