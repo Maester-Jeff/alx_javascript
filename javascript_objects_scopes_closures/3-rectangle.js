@@ -8,5 +8,12 @@ class Rectangle {
             Object.assign (this, {});
         }
     }
+    print () {
+        let i = 0;
+        while (i < this.width) {
+            console.log('X'.repeat(this.height));
+            i++;
+        };
+    }
 }
 module.exports = Rectangle;
