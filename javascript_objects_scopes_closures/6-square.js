@@ -8,8 +8,8 @@ class Square extends ParentSquare {
         }
 
         let i = 0;
-        while (i < this.size) {
-            console.log(c.repeat(this.size));
+        while (i < this.height) {
+            console.log(c.repeat(this.width));
             i++;
         }
     }
