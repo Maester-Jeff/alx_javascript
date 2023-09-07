@@ -1,4 +1,3 @@
 class Rectangle {
-
+    constructor()
 }
-exports.Rectangle;
