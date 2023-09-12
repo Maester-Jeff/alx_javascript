@@ -4,15 +4,10 @@ const req = require('request');
 
 const id = process.argv[2];
 
-if (!id) {
-    console.error('No movie title');
-    process.exit(1);
-}
+const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
 
-const url = 'https://swapi-api.alx-tools.com/api/films/${id}';
-
-req.get(url, (response, body) => {
-        const object = JSON.parse(body);
+req.get(url, (error, response, body) => {
         console.log('code:', response.statusCode);
+        const object = JSON.parse(body);
         console.log(object.title);
     });
