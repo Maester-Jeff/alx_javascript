@@ -8,6 +8,9 @@ const url = '${https://swapi-api.alx-tools.com/api/films/}${id}'
 
 req.get(url, function (body) {
         const object = JSON.parse(body);
-        console.log(object.title)
+        object.results(function (film) {
+        console.log(film.title)
+        })
+        console.log(object.results)
     })
 
