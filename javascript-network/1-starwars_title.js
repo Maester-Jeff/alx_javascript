@@ -4,13 +4,10 @@ const req = require('request');
 
 const id = process.argv[2];
 
-const url = '${https://swapi-api.alx-tools.com/api/films/}${id}'
+const url = 'https://swapi-api.alx-tools.com/api/films/${id}';
 
 req.get(url, function (body) {
         const object = JSON.parse(body);
-        object.results(function (film) {
-        console.log(film.title)
-        })
-        console.log(object.results)
-    })
+        console.log(object.title);
+    });
 
