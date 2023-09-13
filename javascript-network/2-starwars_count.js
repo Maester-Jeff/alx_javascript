@@ -2,7 +2,6 @@
 
 const req = require('request');
 
-const filmId = 18;
 
 const url = process.argv[2];
 
@@ -13,7 +12,7 @@ req.get(url, (error, response, body) => {
     }
     const movies = JSON.parse(body);
     const wedgeAntilles = movies.results.filter((movie => 
-        movie.characters.includes(`https://swapi-api.alx-tools.com/api/films/${filmId}`)
+        movie.characters.includes(`https://swapi-api.alx-tools.com/api/films/18`)
     ));
     console.log(wedgeAntilles.length);
 });
