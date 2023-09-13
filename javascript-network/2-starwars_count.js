@@ -2,14 +2,14 @@
 
 const req = require('request');
 
-const url = process.argv[2];
+const url = `https://swapi-api.alx-tools.com/api/films/${characterId}`;
 
-const characterId = process.argv[3];
+const characterId = process.argv[2];
 
 req.get(url, (error, response, body) => {
     const object = JSON.parse(body);
     const wedgeAntilles = object.results.filter((film) => {
-        film.characters.includes(`https://swapi-api.alx-tools.com/api/films/${characterId}`)
+        film.characters.includes(url)
     })
     console.log(wedgeAntilles.length);
 });
