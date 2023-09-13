@@ -15,7 +15,6 @@ req.get(url, (error, response, body) => {
     console.log(wedgeAntilles.length);
 });
 */
-
 const request = require('request');
 
 // Check if the API URL is provided as an argument
@@ -41,14 +40,24 @@ request(apiUrl, (error, response, body) => {
     process.exit(1);
   }
 
-  // Parse the JSON response
-  const data = JSON.parse(body);
+  try {
+    // Parse the JSON response
+    const data = JSON.parse(body);
 
-  // Filter films where "Wedge Antilles" is present
-  const filmsWithWedgeAntilles = data.results.filter((film) =>
-    film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-  );
+    if (!Array.isArray(data.results)) {
+      console.error('Invalid API response format');
+      process.exit(1);
+    }
 
-  // Print the number of films
-  console.log(filmsWithWedgeAntilles.length);
+    // Filter films where "Wedge Antilles" is present
+    const filmsWithWedgeAntilles = data.results.filter((film) =>
+      film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
+    );
+
+    // Print the number of films
+    console.log(filmsWithWedgeAntilles.length);
+  } catch (parseError) {
+    console.error('Error parsing API response:', parseError);
+    process.exit(1);
+  }
 });
