@@ -4,7 +4,7 @@ const req = require('request');
 
 const url = process.argv[2];
 
-const characterId = 18;
+const characterId = process.argv[3];
 
 req.get(url, (error, response, body) => {
     const object = JSON.parse(body);
