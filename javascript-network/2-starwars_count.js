@@ -8,8 +8,8 @@ const url = `https://swapi-api.alx-tools.com/api/films/${characterId}`;
 
 req.get(url, (error, response, body) => {
     const object = JSON.parse(body);
-    const wedgeAntilles = object.results.filter((film) => {
+    const wedgeAntilles = object.results.filter((film) => 
         film.characters.includes(url)
-    })
+    );
     console.log(wedgeAntilles.length);
 });
