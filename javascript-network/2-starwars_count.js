@@ -13,7 +13,7 @@ req.get(url, (error, response, body) => {
     const characterId = '18';
 
     const wedgeAntilles = movies.filter((movie) => {
-        return movie.characters.includes(`https://swapi-api.alx-tools.com/api/films/${characterId}/`);
+        return movie.characters.includes(`https://swapi.co/api/people/${characterId}/`);
     });
     console.log(wedgeAntilles.length);
 });
