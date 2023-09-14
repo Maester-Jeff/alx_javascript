@@ -10,10 +10,10 @@ req.get(url, (error, response, body) => {
         process.exit(1);
     }
     const movies = JSON.parse(body).results;
-    const characterId = 18;
+    const characterId = '18';
 
     const wedgeAntilles = movies.filter((movie) => {
-        return movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
+        return movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`);
     });
     console.log(wedgeAntilles.length);
 });
