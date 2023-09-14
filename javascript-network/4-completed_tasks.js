@@ -23,21 +23,47 @@ request(url, function (error, response, body) {
     }
 });
 */
-request(url, function (error, response, body) {
+
+const request = require('request');
+
+const apiUrl = process.argv[2];
+
+if (!apiUrl) {
+  console.error('Please provide the API URL as the first argument.');
+  process.exit(1);
+}
+
+request(apiUrl, (error, response, body) => {
   if (error) {
-    console.log(error);
-  } else {
-    const todos = JSON.parse(body);
-    const tasksCompleted = {};
-    for (const todo of todos) {
+    console.error('An error occurred:', error);
+    process.exit(1);
+  }
+
+  if (response.statusCode !== 200) {
+    console.error('Request failed with status code:', response.statusCode);
+    process.exit(1);
+  }
+
+  try {
+    const todosData = JSON.parse(body);
+
+    // Initialize an object to store the count of completed tasks per user.
+    const completedTasksByUser = {};
+
+    // Iterate through the todos and count completed tasks for each user.
+    todosData.forEach((todo) => {
       if (todo.completed) {
-        if (tasksCompleted[todo.userId]) {
-          tasksCompleted[todo.userId] += 1;
+        if (completedTasksByUser[todo.userId]) {
+          completedTasksByUser[todo.userId]++;
         } else {
-          tasksCompleted[todo.userId] = 1;
+          completedTasksByUser[todo.userId] = 1;
         }
       }
-    }
-    console.log(tasksCompleted);
+    });
+
+    console.log(completedTasksByUser);
+  } catch (parseError) {
+    console.error('Error parsing response:', parseError);
+    process.exit(1);
   }
 });
