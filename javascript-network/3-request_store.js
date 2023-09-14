@@ -13,7 +13,7 @@ request.get(url, (error, response, body) => {
             console.error(writeError);
             process.exit[1];
         }
-        console.log(`${url} saved to ${filePath}`)
+        console.log(`${url} saved to ${filePath} thanks`)
     });
 
 });
