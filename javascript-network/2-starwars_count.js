@@ -2,17 +2,18 @@
 
 const req = require('request');
 
-
 const url = process.argv[2];
 
 req.get(url, (error, response, body) => {
     if (error) {
         console.error(error);
-        return;
+        process.exit(1);
     }
-    const movies = JSON.parse(body);
-    const wedgeAntilles = movies.results.filter((movie => 
-        movie.characters.includes(`https://swapi-api.alx-tools.com/api/films/18`)
-    ));
+    const movies = JSON.parse(body).results;
+    const characterId = '18';
+
+    const wedgeAntilles = movies.filter((movie) => {
+        return movie.characters.includes(`https://swapi-api.alx-tools.com/api/films/${characterID}`)
+    });
     console.log(wedgeAntilles.length);
 });
