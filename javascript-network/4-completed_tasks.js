@@ -1,5 +1,5 @@
 #!/usr/bin/node
-
+/*
 const request = require('request')
 
 const url = process.argv[2];
@@ -22,4 +22,22 @@ request(url, function (error, response, body) {
     console.log(completedTasks);
     }
 });
-
+*/
+request(url, function (error, response, body) {
+  if (error) {
+    console.log(error);
+  } else {
+    const todos = JSON.parse(body);
+    const tasksCompleted = {};
+    for (const todo of todos) {
+      if (todo.completed) {
+        if (tasksCompleted[todo.userId]) {
+          tasksCompleted[todo.userId] += 1;
+        } else {
+          tasksCompleted[todo.userId] = 1;
+        }
+      }
+    }
+    console.log(tasksCompleted);
+  }
+});
