@@ -15,7 +15,6 @@ function createClassRoom(numbersOfStudents) {
   }
   var classRoom = createClassRoom(10);
   
-  console.log(classRoom[0]()); // Should return 1
-  console.log(classRoom[3]()); // Should return 4
-  console.log(classRoom[9]()); // Should return 10
-  
+  console.log(classRoom[0]());
+  console.log(classRoom[3]()); 
+  console.log(classRoom[9]()); 
