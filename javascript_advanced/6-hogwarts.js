@@ -3,11 +3,11 @@
 const studentHogwarts = () => {
     let privateScore = 0;
     let name = null;
-  
+
     const changeScoreBy = (points) => {
       privateScore += points;
     };
-  
+
     return {
       setName: (newName) => {
         name = newName;
